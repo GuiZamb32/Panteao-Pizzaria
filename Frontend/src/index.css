@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+:root{
+/*Cores principais*/
+--vermelho: #BC4749;
+--bege: #E7C8A7;
+--branco: #F2E8CF ; 
+--verde: #6A994E ;
+--preto: #000000;
+
+/*Cores para detalhes*/
+--cinza: #555555;
+--azul: #096DD9;
+--azul-claro: #1175e788;
+--amarelo: #d4b506;
+--amarelo-claro: #d8c86c;
+--vermelho-claro: #cc7071;
+--verde-claro: #91c075;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root, body, html{
+  height: 100vh;
+  font-family: 'Luxurious Roman', serif, sans-serif;
+  background-color: var(--branco);
+}
+
+ 

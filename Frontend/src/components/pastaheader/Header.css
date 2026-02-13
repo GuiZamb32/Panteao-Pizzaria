@@ -1,0 +1,189 @@
+:root {
+    --vermelho: #BC4749;
+    --bege: #E7C8A7;
+    --branco: #F2E8CF;
+    --verde: #6A994E;
+    --preto: #000000;
+}
+
+/* ============================== */
+/*            HEADER              */
+/* ============================== */
+
+.container-header {
+    width: 100%;
+    height: 80px;
+    background-color: var(--bege);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 28px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* ============================== */
+/*             LOGO               */
+/* ============================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.espaco-logo {
+    height: 60px;
+    width: 60px;
+}
+
+.Logo-Preto-P {
+    height: 60px;
+    width: 70px;
+}
+
+.texto-logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--preto);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ============================== */
+/*        LINKS DO HEADER         */
+/* ============================== */
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.texto-header {
+    font-size: 18px;
+    color: var(--preto);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.texto-header:hover {
+    color: var(--vermelho);
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* ============================== */
+/*        ÍCONE DE PERFIL         */
+/* ============================== */
+
+.header-user-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.profile-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-icon {
+    width: 30px;
+    height: 30px;
+    opacity: 0.9;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.profile-button:hover .header-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* ============================== */
+/*            DROPDOWN            */
+/* ============================== */
+
+.header-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 180px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    padding: 8px 0;
+    display: none;
+    animation: fadeIn 0.25s ease forwards;
+}
+
+.header-dropdown.open {
+    display: block;
+}
+
+.header-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-item {
+    width: 100%;
+    padding: 12px 18px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #222;
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: #f0f0f0;
+}
+
+/* ============================== */
+/*          ANIMAÇÕES             */
+/* ============================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: .98;
+        transform: translateY(0);
+    }
+}
+
+/* ============================== */
+/*        RESPONSIVIDADE          */
+/* ============================== */
+
+@media (max-width: 768px) {
+    .texto-header {
+        font-size: 16px;
+    }
+
+    .container-header {
+        height: 70px;
+        padding: 0 16px;
+    }
+
+    .texto-logo {
+        font-size: 20px;
+    }
+}

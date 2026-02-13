@@ -1,0 +1,73 @@
+services:
+  pizza-service:
+    build:
+      context: ./backend
+      dockerfile: servicePizza/Dockerfile
+    ports:
+      - "3002:3002"
+    restart: always
+    depends_on:
+      - postgres
+      - translator-service
+    environment:
+      DB_HOST: postgres
+      DB_USER: senai
+      DB_PASSWORD: senai
+      DB_NAME: Panteao-Pizzaria
+
+  translator-service:
+    build:
+      context: ./backend
+      dockerfile: serviceTranslator/Dockerfile
+    ports:
+      - "3004:3004"
+    restart: always
+
+  user-service:
+    build:
+      context: ./backend
+      dockerfile: serviceuser/Dockerfile
+    ports:
+      - "3003:3003"
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_USER: senai
+      DB_PASSWORD: senai
+      DB_NAME: Panteao-Pizzaria
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: senai
+      POSTGRES_PASSWORD: senai
+      POSTGRES_DB: Panteao-Pizzaria
+    volumes:
+      - pgdata:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  ai-service:
+    build:
+      context: ./backend
+      dockerfile: servicebot.ia/Dockerfile
+    ports:
+      - "5003:5003"
+    restart: always
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      AI_SERVICE_PORT: 5003
+
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    restart: always
+
+volumes:
+  pgdata:

@@ -1,0 +1,455 @@
+/* ======================================= */
+/* VARIÁVEIS DE COR                        */
+/* ======================================= */
+:root {
+  /* Cores principais */
+  --vermelho: #BC4749;
+  --bege: #E7C8A7;
+  --branco: #F2E8CF;
+  --verde: #6A994E;
+  --preto: #000000;
+
+  /* Cores para detalhes */
+  --cinza: #555555;
+  --azul: #096DD9;
+  --azul-claro: #1175e788; 
+  --amarelo: #d4b506;
+  --amarelo-claro: #d8c86c; 
+  --vermelho-claro: #cc7071; 
+  --verde-claro: #91c075;   
+}
+
+/* ======================================= */
+/* ESTRUTURA DA PÁGINA                     */
+/* ======================================= */
+.pagina-pedidos {
+    min-height: 100vh;
+    background-color: var(--branco);
+    display: flex;
+    flex-direction: column;
+}
+
+.container-pedidos {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+}
+
+.box-pedidos {
+    background-color: var(--bege); 
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--bege); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    width: 100%;
+    max-width: 700px;
+}
+
+/* ======================================= */
+/* CABEÇALHO DO BOX                      */
+/* ======================================= */
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--cinza);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.btn-voltar svg {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-voltar:hover {
+    color: var(--preto);
+}
+
+.titulo-pedidos {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--preto);
+    margin-bottom: 2rem;
+}
+
+/* ======================================= */
+/* MENSAGEM "SEM PEDIDOS"                  */
+/* ======================================= */
+.sem-pedidos {
+    text-align: center;
+    padding: 3rem 1rem;
+    border: 1px dashed var(--bege);
+    border-radius: 8px;
+    background-color: var(--branco); 
+}
+
+.sem-pedidos-icone {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.sem-pedidos h2 {
+    font-size: 1.3rem;
+    color: var(--preto);
+    margin-bottom: 0.5rem;
+}
+
+.sem-pedidos p {
+    color: var(--cinza);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ======================================= */
+/* LISTA E ITENS DE PEDIDOS                */
+/* ======================================= */
+.lista-pedidos-status {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pedido-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: var(--branco);
+    border: 1px solid var(--bege); 
+    transition: border-color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.pedido-item:last-child {
+    margin-bottom: 0;
+}
+
+.pedido-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--bege);
+}
+
+.pedido-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.pedido-texto {
+    font-size: 0.75rem;
+    color: var(--cinza); 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pedido-id {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--preto);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ======================================= */
+/* STATUS E SLOT CONTAINER                 */
+/* ======================================= */
+.pedido-status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+/* ======================================= */
+/* BADGES DE STATUS                        */
+/* ======================================= */
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 160px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status-icone {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.status-icone img, .status-icone svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+.status-sucesso {
+    background-color: var(--verde-claro);
+    color: var(--preto);
+    border-color: var(--verde);
+}
+
+.status-erro {
+    background-color: var(--vermelho-claro);
+    color: var(--preto);
+    border-color: var(--vermelho);
+}
+
+.status-carregando {
+    background-color: var(--amarelo-claro);
+    color: var(--preto);
+    border-color: var(--amarelo);
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.status-ok {
+    background-color: var(--azul-claro);
+    color: var(--preto);
+    border-color: var(--azul);
+}
+
+/* Animação para o status 'carregando' */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* ======================================= */
+/* INFORMAÇÃO DO SLOT                      */
+/* ======================================= */
+.pedido-slot-info {
+    font-size: 0.85rem;
+    color: var(--preto);
+    background-color: var(--bege); 
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    border: 1px solid var(--cinza); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    align-self: flex-end;
+}
+.pedido-slot-info span {
+    font-size: 0.9rem;
+}
+
+.pedido-slot-info strong {
+    font-weight: bold;
+}
+
+
+/* ======================================= */
+/* RESPONSIVIDADE                          */
+/* ======================================= */
+@media (max-width: 600px) {
+    .box-pedidos {
+        padding: 1.5rem;
+    }
+    .titulo-pedidos {
+        font-size: 1.6rem;
+    }
+    .pedido-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    .pedido-info {
+        margin-right: 0;
+        max-width: 100%;
+    }
+    .pedido-id {
+         max-width: calc(100% - 10px);
+    }
+    .pedido-status-container {
+        width: 100%;
+        align-items: stretch;
+    }
+     .pedido-slot-info {
+        text-align: center;
+        align-self: center;
+    }
+     .status-badge {
+         min-width: auto;
+         justify-content: center;
+     }
+}
+
+.icone-local {
+    width: 16px;
+    height: 16px;
+}
+
+/* ======================================= */
+/* CARD DE RECOMENDAÇÃO IA (NOVO)          */
+/* ======================================= */
+.card-recomendacao-ia {
+    background: linear-gradient(135deg, var(--verde-claro) 0%, #e8fdf1 100%);
+    border: 1px solid var(--verde);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 2rem;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card-recomendacao-ia:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.icon-dionisio {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid var(--verde);
+    background-color: white;
+    padding: 4px;
+}
+
+.card-recomendacao-ia strong {
+    display: block;
+    color: var(--preto);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-recomendacao-ia p {
+    font-style: italic;
+    color: var(--preto);
+    margin: 0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    background: var(--verde-claro);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-left: 4px solid var(--verde);
+    position: relative;
+}
+
+/* Efeito de aspas decorativas */
+.card-recomendacao-ia p::before {
+    content: "“";
+    font-size: 2rem;
+    color: var(--verde);
+    position: absolute;
+    left: 8px;
+    top: -8px;
+}
+
+.card-recomendacao-ia p::after {
+    content: "”";
+    font-size: 2rem;
+    color: var(--verde);
+    position: absolute;
+    right: 8px;
+    bottom: -16px;
+}
+
+/* ... (Seu CSS anterior) ... */
+
+/* ======================================= */
+/* ESTILO DO SLOT (O MOCK/REAL)            */
+/* ======================================= */
+.pedido-slot-destaque {
+    margin-top: 10px;
+    background-color: transparent;
+    border-right: 4px solid var(--preto); /* Linha de destaque lateral */
+    padding-right: 12px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.slot-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--cinza);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 2px;
+}
+
+.slot-label svg {
+    color: var(--preto);
+}
+
+.slot-valor {
+    font-size: 1.4rem; /* Tamanho grande para leitura fácil */
+    font-weight: 800;
+    color: var(--preto);
+    line-height: 1;
+}
+
+/* ======================================= */
+/* BOTÃO DE CONFIRMAR RECEBIMENTO          */
+/* ======================================= */
+.btn-recebi-pedido {
+    margin-top: 12px;
+    background-color: var(--preto); /* Preto para contraste ou Verde para sucesso */
+    color: var(--branco);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-recebi-pedido:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+}
+
+.btn-recebi-pedido:active {
+    transform: translateY(1px);
+}
+
+/* Ajuste pequeno para o texto ID */
+.pedido-texto-id {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 4px;
+}

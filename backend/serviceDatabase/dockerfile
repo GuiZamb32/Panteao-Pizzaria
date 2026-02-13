@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+
+WORKDIR /app
+
+
+COPY . .
+
+
+RUN npm ci
+
+
+WORKDIR /app/serviceDatabase
+
+
+EXPOSE 5003
+
+
+CMD ["node", "db"] 

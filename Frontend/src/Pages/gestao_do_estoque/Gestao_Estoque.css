@@ -1,0 +1,376 @@
+/* ======================================= */
+/* SUA NOVA PALETA DE CORES                */
+/* ======================================= */
+:root {
+  --vermelho: #BC4749;
+  --bege: #E7C8A7;
+  --branco: #F2E8CF ;
+  --verde: #6A994E;
+  --preto: #000000;
+  --cinza: #555555;
+  --azul: #096DD9;
+  --azul-claro: #1175e788;
+  --amarelo: #d4b506;
+  --amarelo-claro: #d8c86c;
+  --vermelho-claro: #cc7071;
+  --verde-claro: #91c075;
+}
+
+/* ======================================= */
+/* ESTRUTURA PRINCIPAL (LAYOUT)            */
+/* ======================================= */
+.pagina-estoque {
+  /* Fundo da página usa o 'bege' */
+  background-color: var(--branco); 
+  min-height: 100vh;
+  color: var(--preto);
+}
+
+.container-gestao {
+  display: flex;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+/* ======================================= */
+/* NAVEGAÇÃO LATERAL (Menu)                */
+/* ======================================= */
+.gestao-nav {
+  flex: 0 0 240px; 
+  /* Menu lateral usa 'preto' */
+  background-color: var(--bege); 
+  color: var(--preto);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--preto);
+  padding: 20px 0;
+  align-self: flex-start;
+}
+
+.gestao-nav h1 {
+  /* Texto do menu em 'branco' */
+  color: var(--preto); 
+  font-size: 1.5rem;
+  padding: 0 25px 15px 25px;
+  margin-bottom: 10px;
+  /* Borda do título em 'cinza' */
+  border-bottom: 1px solid var(--cinza); 
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 25px;
+  background-color: transparent;
+  border: none;
+  /* Texto do item (apagado) usa 'bege' */
+  color: var(--preto); 
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 4px solid transparent;
+}
+
+.nav-item:hover {
+  /* Hover usa 'cinza' */
+  background-color: var(--branco); 
+  color: var(--preto);
+}
+
+.nav-item.active {
+  /* Ativo usa 'cinza' e borda 'verde' */
+  background-color: var(--branco); 
+  color: var(--preto);
+  font-weight: 600;
+  border-left-color: var(--verde); 
+}
+
+/* Estilo para os novos ícones do menu */
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    
+}
+
+/* Faz o ícone ficar totalmente branco no hover/active */
+.nav-item:hover .nav-icon,
+.nav-item.active .nav-icon {
+    opacity: 1;
+}
+
+/* ======================================= */
+/* CONTEÚDO (Lado Direito)                 */
+/* ======================================= */
+.gestao-conteudo {
+  flex: 1; 
+}
+
+.mensagem-erro-geral {
+  /* Cores de erro da sua paleta */
+  background-color: var(--vermelho); 
+  color: var(--preto);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--preto);
+  margin: 10px;
+}
+
+/* ======================================= */
+/* VIEW: DISPONIBILIDADE (Imagem 2)        */
+/* ======================================= */
+.resumo-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.resumo-card,
+.grafico-card,
+.form-card,
+.lista-card {
+  /* Todos os cards usam o seu 'branco' */
+  background-color: var(--bege); 
+  border-radius: 12px;
+  padding: 20px;
+ 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.resumo-card h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: var(--preto);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--branco); /* Borda sutil */
+}
+
+/* Cores dos cards */
+.resumo-card.cor-preto h3 { border-bottom-color: var(--cinza); }
+.resumo-card.cor-vermelho h3 { border-bottom-color: var(--vermelho); }
+.resumo-card.cor-azul h3 { border-bottom-color: var(--azul); }
+
+.card-conteudo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.card-valor {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+.graficos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grafico-card {
+  padding: 20px;
+  text-align: center;
+}
+.grafico-card h3 {
+  margin: 0 0 15px 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.grafico-card h3 i { font-style: normal; margin-right: 8px; }
+
+
+.grafico-donut {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Simulação de Donut Chart com CSS */
+.donut-chart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--azul) var(--percent, 0%), 
+    var(--branco) var(--percent, 0%) 100% 
+  );
+  mask: radial-gradient(transparent 55%, black 56%); 
+  border: 1px solid var(--preto);
+}
+
+.grafico-percentual {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+.grafico-total {
+  font-size: 0.9rem;
+  color: var(--cinza);
+  margin-top: 10px;
+}
+
+/* ======================================= */
+/* VIEW: ADICIONAR (Imagem 3)              */
+/* ======================================= */
+.form-card {
+  padding: 30px;
+}
+.form-card h3 {
+  text-align: left;
+  margin-top: 0;
+}
+.form-card h3 i { font-style: normal; margin-right: 8px; }
+
+.reposicao-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-grupo-reposicao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-grupo-reposicao label {
+  font-weight: 500;
+  color: var(--preto);
+}
+
+.form-grupo-reposicao input,
+.form-grupo-reposicao select {
+  padding: 12px;
+  /* Borda usa 'bege', fundo usa 'branco' */
+  border: 1px solid var(--bege); 
+  background-color: var(--branco);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--preto);
+}
+/* Garante que o fundo do input não seja transparente */
+.form-grupo-reposicao input:focus,
+.form-grupo-reposicao select:focus {
+    background-color: var(--branco);
+}
+
+
+.btn-salvar-posicao {
+  /* Botão principal usa 'verde' */
+  background-color: var(--verde); 
+  color: var(--branco);
+  border: none;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  grid-column: 1 / -1; 
+  margin-top: 10px;
+}
+
+.btn-salvar-posicao:hover {
+  /* Hover usa 'verde-claro' */
+  background-color: var(--verde-claro); 
+}
+
+.mensagem-form-estoque {
+  margin-top: 15px;
+  font-weight: 500;
+  color: var(--verde); /* Mensagem de sucesso em verde */
+}
+
+
+/* ======================================= */
+/* VIEW: REMOVER (Imagem 1)                */
+/* ======================================= */
+.lista-card {
+  padding: 30px;
+}
+.lista-card h3 {
+  text-align: left;
+  margin-top: 0;
+}
+
+.tabela-container {
+  width: 100%;
+}
+
+.lista-header, .slot-item {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 100px; 
+  gap: 15px;
+  align-items: center;
+  padding: 15px;
+}
+
+.lista-header {
+  font-weight: 600;
+  color: var(--preto);
+  /* Fundo do header da tabela em 'bege' */
+  background-color: var(--bege); 
+  border-bottom: 2px solid var(--cinza);
+  border-radius: 6px 6px 0 0;
+}
+
+.lista-detalhada-slots {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--bege);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.slot-item {
+  /* Fundo do item da lista em 'branco' */
+  background-color: var(--branco); 
+  border-bottom: 1px solid var(--bege);
+}
+.slot-item:last-child {
+  border-bottom: none;
+}
+
+.slot-item span {
+  word-break: break-all;
+  color: var(--preto);
+}
+
+.btn-liberar-slot {
+  /* Botão de remoção usa 'vermelho' */
+  background-color: var(--vermelho); 
+  color: var(--branco);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-liberar-slot:hover {
+  /* Hover da remoção usa 'vermelho-claro' */
+  background-color: var(--vermelho-claro); 
+}
+
+.lista-vazia {
+  padding: 20px;
+  text-align: center;
+  color: var(--cinza);
+  background-color: var(--branco);
+}
